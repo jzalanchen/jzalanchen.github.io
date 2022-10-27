@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- need to changed the background picture TODO -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="text-align: center;">Personal Portfolio</title>
+    <link rel="icon" href="Images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEGP2W842S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BEGP2W842S');
+    </script>
+    <template>
+        <dialog id="custom-dialog" style="margin: 10% 50% auto auto; width: 25%; height: 200px;">
+            <p id="title" style="text-align: center;"></p>
+            <textarea id="input-info" style="display:none; width: 100%; height: 20px;"></textarea>
+            <button id="ok" style="margin:20px 60% auto 40%">Ok</button>
+        </dialog>
+    </template>
+    <template id="blog-template">
+        <li style="font-size:20px; margin-top: 15px;">
+            <span>
+                Title: 
+                <span id="span-title" style="width:400px;word-wrap:break-word;"></span>
+                 | Date: 
+                 <span id="span-date"></span> 
+                 | Summary: 
+                 <span id="span-summary" style="width:400px;word-wrap:break-word;"></span>
+            </span>
+        </li>
+    </template>
+</head>
+<body>
+    <a href="#profile" style="display: none;"></a>
+    <nav class="navbar">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+        <span></span>
+        </label>
+        <ul class="flex" id="flex">
+            <li><a class="menu__item" href="#profile">Profile</a></li>
+            <li><a class="menu__item" href="#portfolio">Protfilios</a></li>
+            <li><a class="menu__item" href="#skill">Skills</a></li> 
+            <li><a class="menu__item" href="#get_in_touch">Get in Touch</a></li>
+        </ul> 
+
+    </nav>
+    <!-- draw a funny image on the homepage -->
+    <main>
+        <section id="home">
+            <!-- home section starts -->
+            <h1 ><strong>Jianzhang Chen</strong></h1>
+            <h4>Personal Portfolio</h4>
+            <!-- can use flexbox -->               
+            </section>
+        
+        <a class="gototop" href="#home">
+            <img src="Images/gototop.jpg" alt="Go to Top">
+        </a>
+
+        <div id="motto">                      
+            <div class="motto-container">
+                <h2>My motto</h2>  
+                <picture>
+                    <img src="Images/Edison.webp" alt="Does Not support your broswer"  class="center">
+                </picture>
+                <p>
+                    &ldquo;
+                    Many of life's failures are people who did not realize how close they were to success when they gave up.
+                    &rdquo;
+                    <i>Thomas A. Edison</i>
+                </p>
+            </div>
+            <br>         
+        </div>   
+
+        <!-- <section id="personal-blog" style="min-height: 100px;">
+            <h1 style="margin-bottom: 0%;">My Blogs</h1>
+        </section> -->
+
+        <!-- profile section starts -->
+        <section id="profile">
+            <div class="profile-container">
+                <h1>About Me</h1>
+                <h4>Who i am</h4>
+                <img class="myself" src="Images/myself.jpg" alt="Does Not support your broswer">
+                <!-- need to use CSS to draw wireframe TODO-->
+                <table class="content">
+                    <caption><b>Basic Info</b></caption>
+                    <!-- col 1 needs to align to the left TODO -->
+                    <tr>
+                        <th>First Name: </th>
+                        <td>Jianzhang</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name: </th>
+                        <td>Chen</td> 
+                    </tr>
+                    <tr>
+                        <th>Email: </th>
+                        <td>jic070@ucsd.edu</td>   
+                    </tr>
+                    <tr>
+                        <th>Role: </th>
+                        <td>UCSD Senior Student</td>   
+                    </tr>
+                    <tr>
+                        <th>Major: </th>
+                        <td>Computer Science</td>                                          
+                    </tr>
+                </table> 
+                <!-- need to fix, made the box to a fix width TODO -->
+                <fieldset>
+                    I'm currently an undergraduate senior student at University of California, San Diego major in Computer Science. I have passsion in software programming, machine learning and artifical intelligence. My goal is to become a full-stack engineer.
+                </fieldset>
+            </div>
+        </section>
+
+
+        <!-- Portfolio section starts here -->
+        <section id="portfolio">
+            <h1><b>My projects</b></h1>
+            <label for="pro-select">Choose type of project:</label>
+            <select id="pro-select">
+                <optgroup label="Mobile App">
+                    <option>Zoo Seeker</option>
+                </optgroup>
+                <optgroup label="Data Analysis">
+                    <option>Employment analysis</option>
+                </optgroup>                
+            </select>
+            <button id="confirm">confirm</button>
+            <ol>
+                <li id="Zoo-Seeker">
+                    <em>Zoo Seeker</em>
+                    <details >
+                        <!-- need to use 'pre' tag in the description -->
+                        <summary >Build a navigation system for users</summary>
+                        <ul >
+                            <li>Create a visited plan based on the travel list that the user creates. Finding an optimal solution to save time when the user is visiting the zoo.</li>
+                            <li>Using basic Object-oriented skills to design our application, such as pattern strategy, open-closed principle.</li>
+                            <li>Using JUnit, Espresso framework to implement UI test, integration test.</li>
+                        </ul>
+                    </details>
+                </li>
+        
+                <li id="analysis">
+                    <em>Automotive manufacturing and retail trade employment analysis</em><br>                    
+                   <details >
+                    <summary >Employment related to automobile manufacturing and retail has risen as the increment in vehicle sales</summary>
+                    <ul>
+                        <li>Analyze and predict the relationship with 20,000+ data observations from automotive market hosted in BLS.</li>
+                        <li>Implemented  machine learning algorithms: linear regression, K-fold cross-validation.</li>
+                        <li>Use data visualization to identify relationships and linkages between the U.S. auto market and employment in auto-related industries.</li>
+                    </ul>
+                    <!-- presentation about this project, need to change the audio. TODO-->
+                   </details>
+                </li>
+              </ol>           
+        </section>
+        
+        <!-- Skills section starts here -->
+        <section id="skill" class="skill">
+           <div class="skill-container">
+            <h1><b>Skills</b></h1>
+                <div class="description">
+                    <p>My projects and experience are all related to software engineers, mainly using <code>Java</code> Likewise, I also use <code>C++, Python</code>. Recently I'm starting to learn about databases, MySQL. Through a series of studies, I have a certain ability to 
+                        use object-oriented design, various testing tools and frameworks.</p>
+                    <!-- there is a read more button can be clicked and then show more details -->
+                    <template id="my-template">
+                        <button>More deatils here..</button>
+                    </template>
+                    <!-- when the button is clicked, the content of template should be displayed -->
+                    <!-- need to use JS or CSS -->
+                    <a id="read-more" href="https://www.linkedin.com/in/jianzhang-chen-7843161b9?trk=people-guest_people_search-card" target="_blank">Read more</a><br>
+                </div>
+                <div class="languages">
+                    <div class="html">
+                        <p class="progress-label">HTML</p>
+                        <div class="progress-container">
+                          <progress max="100" value="75">75%</progress>
+                        </div>
+                      </div>
+                      
+                      <div class="css">
+                        <p class="progress-label">CSS</p>
+                        <div class="progress-container">
+                          <progress max="100" value="70">70%</progress>
+                        </div>
+                      </div>
+                      
+                      <div class="javascript">
+                        <p class="progress-label">JavaScript</p>
+                        <div class="progress-container">
+                          <progress max="100" value="65">65%</progress>
+                        </div>
+                      </div>
+
+                      <div class="cplusplus">
+                        <p class="progress-label">C/C++</p>
+                        <div class="progress-container">
+                          <progress max="100" value="70">70%</progress>
+                        </div>
+                      </div>
+
+                      <div class="java">
+                        <p class="progress-label">Java</p>
+                        <div class="progress-container">
+                          <progress max="100" value="80">80%</progress>
+                        </div>
+                      </div>
+
+
+                      <div class="mysql">
+                        <p class="progress-label">MySql</p>
+                        <div class="progress-container">
+                          <progress max="100" value="60">60%</progress>
+                        </div>
+                      </div>
+
+                      <div class="python">
+                        <p class="progress-label">Python</p>
+                        <div class="progress-container">
+                          <progress max="100" value="70">70%</progress>
+                        </div>
+                      </div>
+                </div> 
+           </div>                  
+        </section>
+
+        <!-- get in touch section starts here -->
+        <section id="get_in_touch">
+            <h1><b>Get in Touch</b></h1>
+            <form id="contact-form" class="gform" method="POST" data-email="cjz19931031@gmail.com" action="https://script.google.com/macros/s/AKfycbwM6Hkju3XDc3gdYTIKkweVG_9LmR0umSV1MoQy4hsaHu6d9QSsDtE02FBMfhYee-1c/exec">                
+                <fieldset>
+                    <legend>Send message</legend>                  
+                    <label for="fname">First name: </label>
+                    <input type="text" id="fname" name="fname" required><br><br>
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname" required><br><br>
+                    <label>Want to get respond?</label>
+                    <select name="choice" id="choice">
+                        <option value="phone">phone</option>
+                        <option value="email">email</option>
+                    </select><br><br>
+                    <textarea id="contact-info" placeholder="optional" name="contact-info"></textarea><br><br>          
+                    <label><i>Message：</i></label><br>
+                    <textarea id="message" placeholder="Describe here" name="message" required></textarea>
+                    <br>
+                    <input id="send" type="submit" value="send">
+                </fieldset>
+            </form>          
+        </section>
+    </main>
+    <!-- foorter starts here-->
+    <footer>
+        <p>
+            &copy;Created by 
+            <span>
+                <!-- need to add style to change the color of the author -->
+                Jianzhang Chen
+            </span>
+        </p>
+        <!-- There will be a button to load the iframe window TODO -->
+    </footer>
+
+
+    <script type="module">
+        import * as sub from '../submitform.js'
+        window.addEventListener("load", (ev) =>{
+            ev.preventDefault();            
+            document.getElementById("send").addEventListener("click", function (_ev) {
+                _ev.preventDefault();
+                const formData = new FormData(document.getElementById("contact-form"));
+                const valid = sub.checkFormValid();
+                if(valid){
+                    sub.sendData(formData);
+                }
+            })
+        })
+    </script>
+
+
+</body>
+</html>

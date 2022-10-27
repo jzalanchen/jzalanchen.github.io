@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method test</title>
+</head>
+<body>
+    <form id="test-form">
+        <label for="record-id">ID</label>
+        <input type="text" id="record" name="record">
+        <label for="article_name">Article name</label>
+        <input type="text" id="article_name" name="article_name">
+        <label for="article_body"> Article body</label>
+        <textarea id="article_body" name="article_body"></textarea>
+    </form>
+    <label id="for-choice"for="choice">Choose your require method</label>
+    <select id="choice">        
+        <option value="fetch">Fetch Method</option>
+        <option value="XML">XML Method</option>
+    </select>
+    <br>
+    <div id = "button-choice">
+        <button id="post">Post</button>
+        <button id="get">Get</button>
+        <button id="put">Put</button>
+        <button id="delete">Delete</button>
+    </div>
+    <pre ><output id="respond"></output></pre>
+
+<style>
+    * {
+        padding: 0%;
+        margin: 0%;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        width:15%;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+
+    textarea{
+        height: 100px;
+        
+    }
+    select{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #for-choice{
+        margin-left: 50px;
+    }
+
+    button{
+        margin-left: 50px;
+    }
+</style>
+<script type="module">
+    import * as met from '../methodtest.js';
+
+    window.addEventListener("DOMContentLoaded", function (ev){
+        ev.preventDefault();
+        document.getElementById("button-choice").addEventListener("click", function(event) {
+            const formData = document.getElementById("test-form");
+            
+            let choice = event.target.id;
+            //console.log(event.target.id);
+            let method = document.getElementById("choice").value;
+            //console.log(method);
+            if(choice === "put"){
+                met.sendDataWithXMLPut(formData);
+            }
+            else if(choice === 'post'){
+                met.sendDataWithXMLPost(formData);
+            }
+            else if(choice === 'get'){
+                met.sendDataWithXMLGet(formData);
+            }
+            else if(choice === 'delete'){
+                met.sendDataWithXMLDelete(formData);
+            }
+        });
+    })
+
+
+</script>
+</html>

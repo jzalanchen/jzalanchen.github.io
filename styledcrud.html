@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Crud</title>
+    <link rel="stylesheet" href="styledposts.css">
+    <template id="blog-template">
+        <li style="font-size:20px; margin-bottom: 15px;">
+            <span>
+                Title: 
+                <span id="span-title" style="width:400px;word-wrap:break-word;"></span>
+                 | Date: 
+                 <span id="span-date"></span> 
+                 | Summary: 
+                 <span id="span-summary" style="width:400px;word-wrap:break-word;">
+            </span>
+            <button type="submit" id="edit">&#9999;Edit</button>
+            <button type="submit" id="delete">&#128465;Delete</button>
+            </span>
+        </li>
+    </template>
+
+    <template id="update-form">
+        <dialog id="custom-dialog" style="width: 20%; height: 250px; text-align: center;">
+            <form id="insert-blog-form" style="display: flex; flex-direction: column">
+                <label for="title" style="text-align: center;" >Post title</label>
+                <br>
+                <input type="text" name="title" id="title" >
+                <br>
+                <label for="summary" style="text-align: center;">Post Summary</label>
+                <br>
+                <!-- <input type="text" name="summary" id="summary" style="height: 100px;"> -->
+                <textarea id="summary" name="summary" rows="4" cols="50"></textarea>
+            </form>
+            <button type="submit" id="ok">Ok</button>
+            <button type="submit" id="cancel">Cancel</button>
+        </dialog>
+    </template>
+</head>
+
+<body>
+    <h1 id="my-blogs-list">My blogs list</h1>
+    <button type="submit" id="insert"><span style="float: center;">&#10133;</span>Add Blog</button>
+    <p id="hint">You don't have blog in this time</p>    
+    <main>
+        <section id="all-blogs"></section>        
+    </main>    
+</body>
+
+<script type="module">
+    import * as Blog from '../blog.js'
+    document.addEventListener("DOMContentLoaded", (_ev) => {
+        const blogsContainer = document.getElementById("all-blogs");
+
+        Blog.redisplayAllBlogs(blogsContainer);
+
+        document.getElementById("insert").addEventListener("click", function(){
+            Blog.showDiag();
+
+            document.getElementById("cancel").addEventListener("click", function() {
+                Blog.closeDiag();
+            });
+
+            document.getElementById("ok").addEventListener("click", function(ev) {
+                ev.preventDefault();
+                const formData = new FormData(document.getElementById("insert-blog-form"));
+                Blog.closeDiag();
+                const blog = {};
+                for(const[key, value] of formData.entries()){
+                    blog[key] = value;
+                }
+                
+                blog["date"] = Blog.dateFormat();
+                Blog.insertBlog(blog);
+                Blog.redisplayAllBlogs(blogsContainer);
+                
+        });        
+    }); 
+});
+
+</script>
+</html>

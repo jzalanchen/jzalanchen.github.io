@@ -1,0 +1,24 @@
+{
+  "name": "cse134b-hw4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blog.js",
+  "dependencies": {
+    "dompurify": "^2.3.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzalanchen/CSE134B-hw4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jzalanchen/CSE134B-hw4/issues"
+  },
+  "homepage": "https://github.com/jzalanchen/CSE134B-hw4#readme"
+}
